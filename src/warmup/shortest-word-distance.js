@@ -23,11 +23,7 @@ export function test(words, word1, word2) {
 }
 
 // Test cases
-console.log(
-  test(['the', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog'], 'fox', 'dog'),
-); // 5
+console.log(test(['the', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog'], 'fox', 'dog')); // 5
 console.log(test(['a', 'c', 'd', 'b', 'a'], 'a', 'b')); // 1
 console.log(test(['a', 'b', 'c', 'd', 'e'], 'a', 'e')); // 4
-console.log(
-  test(['repeated', 'words', 'in', 'the', 'array', 'repeated', 'words'], 'repeated', 'words'),
-); // 1
+console.log(test(['repeated', 'words', 'in', 'the', 'array', 'repeated', 'words'], 'repeated', 'words')); // 1
