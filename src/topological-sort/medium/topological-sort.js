@@ -28,7 +28,7 @@ export function test(vertices, edges) {
   const topologicalOrder = [];
 
   // create an adjacent list representing the graph, where the key (the index in array) is the parent vertex value and the value is the array of children vertices
-  const graph = new Array(vertices).fill([]);
+  const graph = new Array(vertices).fill(null).map(() => []);
 
   // calculate the income degree of each child vertex
   const inDegree = new Array(vertices).fill(0);
