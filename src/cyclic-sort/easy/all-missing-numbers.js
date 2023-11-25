@@ -19,17 +19,20 @@
 export function test(nums) {
   const missing = [];
   const unique = new Set(nums);
+  const len = nums.length;
+
   let i = 0;
 
-  while (i < nums.length) {
+  while (i < len) {
     const rightPosition = nums[i] - 1;
-    if (nums[i] !== nums[rightPosition]) {
+    if (nums[i] < len && nums[i] !== nums[rightPosition]) {
       [nums[i], nums[rightPosition]] = [nums[rightPosition], nums[i]];
+    } else {
+      i++;
     }
-    i++;
   }
 
-  for (let i = 0; i < nums.length; i++) {
+  for (let i = 0; i < len; i++) {
     const rightPosition = nums[i] - 1;
     const missingNumber = i + 1;
     if (!unique.has(missingNumber) && nums[i] !== rightPosition) {
