@@ -28,28 +28,48 @@ export class Heap {
     return this.heap.length;
   }
 
-  get root() {
-    return this.heap[0];
-  }
-
   // Return the smallest/largest element
   // Time complexity - O(1)
   peak() {
-    return this.root;
+    if (this.length === 0) return undefined;
+    return this.heap[0];
   }
 
-  // Return first K the smallest/largest elements
+  // Return the Kth smallest/largest element
   // Time complexity - O(k * log(n))
-  getKElements(k) {
-    const values = new Array(k).fill(0);
+  getKthElement(k) {
+    if (this.length === 0) return undefined;
     let i = 0;
+    const popped = [];
 
-    while (i < k) {
-      values[i] = this.pop();
+    while (i < k - 1) {
+      popped.push(this.pop());
       i++;
     }
 
-    return values;
+    const kthElement = this.peak();
+    popped.forEach((n) => this.push(n));
+
+    return kthElement;
+  }
+
+  // Return first K the smallest/largest elements
+  // Time complexity - O((k - 1) * log(n))
+  getTopKElements(k) {
+    if (this.length === 0) return undefined;
+
+    const popped = [];
+    let i = 0;
+
+    while (i < k) {
+      const n = this.pop();
+      if (n) popped.push(n);
+      i++;
+    }
+
+    popped.forEach((n) => this.push(n));
+
+    return popped;
   }
 
   // Push a new element and restore Heap property
@@ -167,7 +187,7 @@ export class Heap {
   }
 }
 
-// const heap = new MinHeap((a, b) => a - b);
+// const heap = new Heap((a, b) => b - a);
 // heap.push(20);
 // heap.push(2);
 // heap.push(15);
@@ -175,12 +195,15 @@ export class Heap {
 // heap.push(8);
 // heap.push(1);
 //
-// console.log(heap.heap); // [1, 2, 5, 8, 15, 20]
+// console.log(heap.heap); // [ 20, 15, 8, 5, 2, 1 ]
 //
-// console.log(heap.peak()); // 1
-// console.log(heap.pop()); // 1
-// console.log(heap.pop()); // 2
-// console.log(heap.pop()); // 5
-// console.log(heap.peak()); // 8
+// console.log(heap.peak()); // 20
+// console.log(heap.pop()); // 20
+// console.log(heap.pop()); // 15
+// console.log(heap.pop()); // 8
+// console.log(heap.peak()); // 5
 //
-// console.log(heap.getKElements(3)); // [8, 15, 20]
+// console.log(heap.heap); // [5, 2, 1]
+//
+// console.log(heap.getKthElement(2)); // 2
+// console.log(heap.getKElements(2)); // [5, 2, 1]

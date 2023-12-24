@@ -1,5 +1,4 @@
-import { MinHeap } from '../MinHeap.js';
-import { MaxHeap } from '../MaxHeap.js';
+import { Heap } from '../Heap.js';
 
 /**
  * Given an unsorted array of numbers, find Kth the smallest number in it.
@@ -21,7 +20,7 @@ import { MaxHeap } from '../MaxHeap.js';
 // Time complexity - O(k * log(k) + (n - k) * log(k)) ~ O(n * log(k))
 // Space Complexity - O(k)
 export function test(array, k) {
-  const maxHeap = new MaxHeap();
+  const maxHeap = new Heap((a, b) => b - a);
 
   // O(k * log(k))
   for (let i = 0; i < k; i++) {
@@ -30,13 +29,13 @@ export function test(array, k) {
 
   // O((n - k) * log(k))
   for (let i = k; i < array.length; i++) {
-    if (array[i] < maxHeap.getMax()) {
+    if (array[i] < maxHeap.peak()) {
       maxHeap.pop();
       maxHeap.push(array[i]);
     }
   }
 
-  return maxHeap.getMax();
+  return maxHeap.peak();
 }
 
 // Test cases

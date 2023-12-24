@@ -1,4 +1,4 @@
-import { MinHeap } from '../MinHeap.js';
+import { Heap } from '../Heap.js';
 
 /**
  * Given an unsorted array of numbers, find the ‘K’ largest numbers in it.
@@ -13,7 +13,7 @@ import { MinHeap } from '../MinHeap.js';
 // Time complexity - O(k * log(k) + (n - k) * log(k)) ~ O(n * log(k))
 // Space Complexity - O(k)
 export function test(array, k) {
-  const minHeap = new MinHeap();
+  const minHeap = new Heap((a, b) => a - b);
 
   // O(k * log(k))
   for (let i = 0; i < k; i++) {
@@ -22,7 +22,7 @@ export function test(array, k) {
 
   // O((n - k) * log(k))
   for (let i = k; i < array.length; i++) {
-    if (array[i] > minHeap.getMin()) {
+    if (array[i] > minHeap.peak()) {
       minHeap.pop();
       minHeap.push(array[i]);
     }
