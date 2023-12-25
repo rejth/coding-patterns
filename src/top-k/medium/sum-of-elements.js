@@ -32,12 +32,13 @@ console.log(test([3, 5, 8, 7], 1, 4)); // 12
  * Basically we don't even have to search for K2'th the smallest element.
  * We just need to sort the array, find K1'th the smallest element and take X element between K1 and K2:
  * 1. initialize a Max Heap
- * 2. iterate over first K1 elements of the array and push each element to the Heap
- * 3. iterate over N - K1 elements of the array and do:
+ * 2. iterate over first K2 elements of the array and push each element to the Heap
+ * 3. iterate over N - K2 elements of the array and do:
  *    - if a number is less than the max element of the Heap, pop the max element and push the number to the Heap
- * 4. after that, we will have K1 the smallest elements in the Heap,
- *    and the first element in the Heap will be K1'th the smallest element
- * 5. then we need to take X element after K1'th the smallest element,
+ * 4. after that, we will have K2 the smallest elements in the Heap,
+ *    and the first element in the Heap will be K2'th the smallest element.
+ *    That means, K1'th the smallest element will be the K1'th element from the end of the Heap
+ * 5. so we need to take X elements from K2'th the smallest element till K1'th,
  * where X = K2 - K1 - 1, because we need the elements between K1 and K2 excluding K1 and K2
  *
  * time complexity -
@@ -68,7 +69,7 @@ export function test1(array, K1, K2) {
 
   // The first element in the Heap is K2'th the smallest element
   // That means, K1'th the smallest element will be the K1'th element from the end of the Heap
-  // So we take element from index = 1 to index = heap.length - K1
+  // So we will take elements from index = 1 to index = heap.length - K1
   return maxHeap.heap.slice(1, maxHeap.length - K1).reduce((acc, current) => (acc += current), 0);
 }
 
