@@ -27,7 +27,7 @@ import { Heap } from '../../top-k/Heap.js';
  * min heap = [6, 6]
  * result =  [1, 2, 3, 3, 4]
  *
- * time complexity - O(N * log(K)), N - the overall number of elements, K - the number of input arrays
+ * time complexity - O(N * log(M)), M - the number of input arrays, N - the overall number of elements
  * space complexity - O(N), N - the overall number of elements
  */
 export function test(lists) {
@@ -37,7 +37,7 @@ export function test(lists) {
   const listIndexByValue = {};
   const elementIndexByValue = {};
 
-  // O(K * log(K))
+  // O(K * log(M))
   lists.forEach((list, index) => {
     const smallest = list[0];
     minHeap.push(smallest);
@@ -45,7 +45,7 @@ export function test(lists) {
     elementIndexByValue[smallest] = [0];
   });
 
-  // O(N * log(K))
+  // O(N * log(M))
   while (minHeap.length > 0) {
     const smallest = minHeap.pop();
     const listIndex = listIndexByValue[smallest].shift();
