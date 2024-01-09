@@ -35,6 +35,11 @@ export class Heap {
     return this.heap[0];
   }
 
+  last() {
+    if (this.length === 0) return undefined;
+    return this.heap[this.length - 1];
+  }
+
   // Return the Kth smallest/largest element
   // Time complexity - O(k * log(n))
   getKthElement(k) {
@@ -107,8 +112,8 @@ export class Heap {
   #liftChildUp() {
     /*
      * 1. Compare the last pushed node with its parent:
-     *    a. If the parent is less/greater than the last node, then heap is stable
-     *    b. Else, swap the last node with the parent
+     * a. If the parent is less/great than the last node, then heap is stable
+     * b. Else, swap the last node with the parent
      * 2. Repeat step 1 until root is reached or the heap property is established.
      */
     let cursor = this.length - 1;
@@ -137,9 +142,9 @@ export class Heap {
   #liftChildDown() {
     /*
      * 1. Compare the new root node's value with its children:
-     *    a. If the root is less/greater than both of its children values then heap is stable
-     *    b. Else, swap the root with the smaller/larger child value
-     * 2. Repeat step 1 until last child is reached or the heap property is established.
+     * a. If the root is less/greater than both of its children's values, then heap is stable
+     * b. Else, swap the root with the smaller/larger child value
+     * 2. Repeat step 1 until the last child is reached or the heap property is established.
      */
     let cursor = 0;
 
