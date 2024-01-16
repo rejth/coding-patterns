@@ -4,8 +4,8 @@
  *
  * This pattern defines an easy way to understand the technique for performing topological sorting of a set of elements and then solves a few problems using it.
  *
- * A topological ordering is possible only when the graph has no directed cycles, i.e. if the graph is a Directed Acyclic Graph (DAG).
- * If the graph has a cycle, some vertices will have cyclic dependencies which makes it impossible to find a linear ordering among vertices.
+ * A topological ordering is possible only when the graph has no directed cycles, i.e., if the graph is a Directed Acyclic Graph (DAG).
+ * If the graph has a cycle, some vertices will have cyclic dependencies which make it impossible to find a linear ordering among vertices.
  *
  * Input: Vertices=4, Edges=[3, 2], [3, 0], [2, 0], [2, 1]
  * Output: Following are the two valid topological sorts for the given graph:
@@ -21,7 +21,7 @@
  * 5) 4, 2, 0, 3, 1
  */
 
-// V is the total number of vertices and E is the total number of edges in the graph.
+// V is the total number of vertices, and E is the total number of edges in the graph.
 // Time complexity - O(V + E)
 // Space Complexity - O(V + E)
 export function test(vertices, edges) {
@@ -39,7 +39,7 @@ export function test(vertices, edges) {
     inDegree[child]++;
   });
 
-  // find the sources vertices (with 0 in-degree)
+  // find the source vertices (with 0 in-degree)
   const sources = [];
   inDegree.forEach((degree, vertex) => {
     if (degree === 0) {
@@ -48,7 +48,7 @@ export function test(vertices, edges) {
   });
 
   // for each source, add it to the result and subtract one from all of its children's in-degrees.
-  // If a child's in-degree becomes zero, add it to sources queue
+  // If a child's in-degree becomes zero, add it to the source queue
   while (sources.length > 0) {
     const source = sources.shift();
     const children = graph[source];

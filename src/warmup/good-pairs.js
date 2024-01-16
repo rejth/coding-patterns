@@ -52,7 +52,7 @@ export function test3(array) {
 
   for (let n of array) {
     map[n] = (map[n] || 0) + 1;
-    // every new occurrence of a number can be paired with every previous occurrence
+    // every new occurrence of a number can be paired with every previous occurrence,
     // so if a number has already appeared 'p' times, we will have 'p-1' new pairs
     pairs += map[n] - 1;
   }
