@@ -18,7 +18,7 @@ export function test(array, target) {
   while (i < j) {
     const sum = array[i] + array[j];
     if (sum === target) return [i, j];
-    else if (sum > target) j--;
+    if (sum > target) j--;
     else i++;
   }
 }
@@ -26,3 +26,4 @@ export function test(array, target) {
 // Test cases
 console.log(test([1, 2, 3, 4, 6], 6)); // [1, 3]
 console.log(test([2, 5, 9, 11], 11)); // [0, 2]
+console.log(test([3, 2, 4], 6)); // [1, 2]

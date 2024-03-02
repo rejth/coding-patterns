@@ -52,7 +52,8 @@ function test2(encoded) {
 
   for (const s of encoded) {
     if (!isNaN(s)) {
-      num = +s;
+      if (s === '0') num = Number(num + s);
+      else num = +s;
     } else if (s === '[') {
       stack.push(num);
       stack.push(decoded);
@@ -73,4 +74,4 @@ function test2(encoded) {
 console.log(test2('3[a]2[bc]')); // "aaabcbc"
 console.log(test2('3[a3[c]]')); // "acccacccaccc"
 console.log(test2('2[b3[d]]')); // "bdddbddd"
-console.log(test2('4[z]')); // "zzzz"
+console.log(test2('10[z]')); // "zzzzzzzzzz"

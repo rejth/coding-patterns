@@ -142,7 +142,7 @@ export class Heap {
   #liftChildDown() {
     /*
      * 1. Compare the new root node's value with its children:
-     * a. If the root is less/greater than both of its children's values, then heap is stable
+     * a. If the root is less/great than both of its children's values, then heap is stable
      * b. Else, swap the root with the smaller/larger child value
      * 2. Repeat step 1 until the last child is reached or the heap property is established.
      */

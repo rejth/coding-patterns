@@ -68,3 +68,4 @@ console.log(test1([6, 3, 5, 1, 2])); // 4
 
 console.log(test2([1, 5, 2, 6, 4])); // 3
 console.log(test2([6, 3, 5, 1, 2])); // 4
+console.log(test1([3, 0, 1])); // 2

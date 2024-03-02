@@ -39,7 +39,7 @@ export function test(matrix) {
     isClosed &= visitAllAdjacentCells(i, j + 1); // right cell
     isClosed &= visitAllAdjacentCells(i, j - 1); // left cell
     isClosed &= visitAllAdjacentCells(i + 1, j); // lower cell
-    isClosed &= visitAllAdjacentCells(i - 1, j + 1); // upper cell
+    isClosed &= visitAllAdjacentCells(i - 1, j); // upper cell
 
     return isClosed;
   };

@@ -15,7 +15,7 @@
  */
 
 // Time complexity - O(n * log(n))
-// Space Complexity - O(1)
+// Space Complexity - O(n)
 export function test(nums) {
   nums.sort((a, b) => a - b);
 
@@ -71,3 +71,5 @@ console.log(test2([2, 4, 1, 4, 4])); // 4
 console.log(test3([1, 4, 4, 3, 2])); // 4
 console.log(test3([2, 1, 3, 3, 5, 4])); // 3
 console.log(test3([2, 4, 1, 4, 4])); // 4
+console.log(test3([3, 1, 3, 4, 2]));
+console.log(test2([2, 1, 1])); // 4

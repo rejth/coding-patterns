@@ -21,8 +21,7 @@ export function test(arrayA, arrayB) {
     const [startA, endA] = arrayA[i];
     const [startB, endB] = arrayB[j];
 
-    const isOverlapped =
-      (startA >= startB && startA <= endB) || (startB >= startA && startB <= endA);
+    const isOverlapped = (startA >= startB && startA <= endB) || (startB >= startA && startB <= endA);
 
     if (isOverlapped) {
       const maxStart = Math.max(startA, startB);
